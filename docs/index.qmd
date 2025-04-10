@@ -10,6 +10,8 @@ authors:
     roles: writing
 
 bibliography: references.bib
+execute: 
+  echo: true
 ---
 
 # *Reburn and Return: How Invasive Species Influence Fire Return Intervals in Colorado.*
@@ -55,12 +57,6 @@ pts = Invasive_withLoc %>% st_as_sf(coords = c("LON", 'LAT'), crs = 4326)
 if (interactive()) { mapview::mapview(pts) }
 ```
 
-{r} r = rast("/Users/chippymarx/Downloads/sl_forb_current.tiff")
-
-pts = Invasive_withLoc %\>% st_as_sf(coords = c("LON", 'LAT'), crs = 4326)
-
-if (interactive()) { mapview::mapview(pts) }
-
 I was then able to get this visualization:
 
 ![](img/USFSdataonmap.png)
@@ -88,19 +84,15 @@ cc = crop(r, bb)
 plot(cc) 
 ```
 
-![](img/rastercroppedtoCO.png)
-
 That produced the above image which is the spatial data showing forb invasion risk in Colorado.
 
-Then to get them to overlay eachother, I did these steps :
+Then to get them to overlay each other, I did these steps :
 
 ```{r}
 # Add the (reprojected) points on top of the cropped raster in red
 plot(cc)
 plot(project(vect(pts), crs(r)), add = TRUE, col = "red", pch = 16)
 ```
-
-![](img/overlayingdata.png)
 
 I am still trying to learn how to work with spatial data and need some additional help with getting to a testing phase, but will be in office hours tomorrow.
 

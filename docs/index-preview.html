@@ -347,9 +347,6 @@ dttm  (2): CREATED_DATE, MODIFIED_DATE
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">interactive</span>()) { mapview<span class="sc">::</span><span class="fu">mapview</span>(pts) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<p>{r} r = rast(“/Users/chippymarx/Downloads/sl_forb_current.tiff”)</p>
-<p>pts = Invasive_withLoc %&gt;% st_as_sf(coords = c(“LON”, ‘LAT’), crs = 4326)</p>
-<p>if (interactive()) { mapview::mapview(pts) }</p>
 <p>I was then able to get this visualization:</p>
 <p><a href="img/USFSdataonmap.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/USFSdataonmap.png" class="img-fluid"></a></p>
 <p>Next I had to limit the spatial data to Colorado :</p>
@@ -381,9 +378,8 @@ dttm  (2): CREATED_DATE, MODIFIED_DATE
 </div>
 </div>
 </div></div>
-<p><a href="img/rastercroppedtoCO.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/rastercroppedtoCO.png" class="img-fluid"></a></p>
 <p>That produced the above image which is the spatial data showing forb invasion risk in Colorado.</p>
-<p>Then to get them to overlay eachother, I did these steps :</p>
+<p>Then to get them to overlay each other, I did these steps :</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the (reprojected) points on top of the cropped raster in red</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cc)</span>
@@ -391,12 +387,11 @@ dttm  (2): CREATED_DATE, MODIFIED_DATE
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
-<p class=""><a href="index_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p class=""><a href="index_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div></div>
-<p><a href="img/overlayingdata.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/overlayingdata.png" class="img-fluid"></a></p>
 <p>I am still trying to learn how to work with spatial data and need some additional help with getting to a testing phase, but will be in office hours tomorrow.</p>
 <p><u><strong>Methods</strong></u></p>
 <p>The first test we will run will be to model the influence of a functional group of invasive species to see how that affects the projection for fire and an invasive return interval. We will try out several models including a linear regression, random forest, and Xgboost. We will also use a Bayesian model to get uncertainty estimates and a more flexible hierarchical structure to represent random effects for the region or species. We will find the best model and then we can use that to make projection predictions for sites that we don’t have projection data for.&nbsp;&nbsp;</p>
